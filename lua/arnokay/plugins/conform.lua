@@ -11,11 +11,13 @@ return {
 				javascript = { "eslint_d", "prettier" },
 				typescript = { "eslint_d", "prettier" },
 			},
-			format_on_save = {
-				lsp_fallback = true,
-				async = false,
-				timeout_ms = 500,
-			},
+      -- disable format_on_save
+      --
+			-- format_on_save = {
+			-- 	lsp_fallback = true,
+			-- 	async = false,
+			-- 	timeout_ms = 500,
+			-- },
 		})
 
 		vim.keymap.set("n", "<leader>mp", function()
