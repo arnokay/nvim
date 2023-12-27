@@ -1,7 +1,23 @@
+-- TODO: finish configurate mappings
+-- local M = {}
+
 local opts = {
 	silent = true,
 	noremap = true,
 }
+
+-- M.global = {
+  -- n = {
+    -- ["<leader>pn"] = {
+      -- ":pu<CR>",
+      -- "paste after current line"
+    -- },
+    -- ["<leader>pp"] = {
+      -- ":-1pu!<CR>",
+      -- "paste before current line",
+    -- },
+  -- }
+-- }
 
 -- paste after current line
 vim.keymap.set("n", "<leader>pn", ":pu<CR>", opts)
@@ -42,3 +58,5 @@ vim.keymap.set("v", "<leader>d", '"_d')
 
 -- edit all words that you on right now
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- return M
