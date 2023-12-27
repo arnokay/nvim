@@ -54,14 +54,15 @@ lspconfig.gopls.setup({
 	},
 })
 
-lspconfig.tsserver.setup({
-	capabilities = capabilities,
-	init_options = {
-		preferences = {
-			disableSuggestions = true,
-		},
-	},
-})
+-- TODO: remove if typescript-tools.nvim is gonna be good
+-- lspconfig.tsserver.setup({
+-- 	capabilities = capabilities,
+-- 	init_options = {
+-- 		preferences = {
+-- 			disableSuggestions = true,
+-- 		},
+-- 	},
+-- })
 
 local luasnip = require("luasnip")
 
@@ -113,8 +114,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
 		local opts = { buffer = ev.buf }
+		vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+		vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
+		vim.keymap.set("n", "gh", vim.lsp.buf.hover, opts)
+		vim.keymap.set("n", "rn", vim.lsp.buf.rename, opts)
 	end,
 })

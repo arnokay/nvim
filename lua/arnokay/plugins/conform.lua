@@ -8,8 +8,8 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				go = { "gofumpt", "goimports-reviser" },
-				javascript = { "eslint_d" },
-				typescript = { "eslint_d" },
+				javascript = { "eslint_d", "prettier" },
+				typescript = { "eslint_d", "prettier" },
 			},
 			format_on_save = {
 				lsp_fallback = true,

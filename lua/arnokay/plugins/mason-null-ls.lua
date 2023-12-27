@@ -15,6 +15,7 @@ return {
 					"goimports-reviser",
 					"golangci-lint",
 					"luacheck",
+					"prettier",
 				},
 			})
 		end,
