@@ -7,16 +7,16 @@ local opts = {
 }
 
 -- M.global = {
-  -- n = {
-    -- ["<leader>pn"] = {
-      -- ":pu<CR>",
-      -- "paste after current line"
-    -- },
-    -- ["<leader>pp"] = {
-      -- ":-1pu!<CR>",
-      -- "paste before current line",
-    -- },
-  -- }
+-- n = {
+-- ["<leader>pn"] = {
+-- ":pu<CR>",
+-- "paste after current line"
+-- },
+-- ["<leader>pp"] = {
+-- ":-1pu!<CR>",
+-- "paste before current line",
+-- },
+-- }
 -- }
 
 -- paste after current line

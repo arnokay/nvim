@@ -12,6 +12,7 @@ return {
 					"stylua",
 					"eslint_d",
 					"gofumpt",
+          "goimports",
 					"goimports-reviser",
 					"golangci-lint",
 					"luacheck",

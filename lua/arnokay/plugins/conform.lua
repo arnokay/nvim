@@ -7,12 +7,12 @@ return {
 		conform.setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
-				go = { "gofumpt", "goimports-reviser" },
+				go = { "gofumpt", "goimports", "goimports-reviser" },
 				javascript = { "eslint_d", "prettier" },
 				typescript = { "eslint_d", "prettier" },
 			},
-      -- disable format_on_save
-      --
+			-- disable format_on_save
+			--
 			-- format_on_save = {
 			-- 	lsp_fallback = true,
 			-- 	async = false,

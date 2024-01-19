@@ -11,6 +11,11 @@ return {
 				-- TODO: remove if typescript-tools is gonna be good
 				-- "tsserver",
 				"lua_ls",
+        "templ",
+        "html",
+        "htmx",
+        "tailwindcss",
+        "bashls"
 			},
 		})
 	end,

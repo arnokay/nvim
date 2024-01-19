@@ -11,6 +11,7 @@ lspconfig.lua_ls.setup({
 			client.config.settings = vim.tbl_deep_extend("force", client.config.settings, {
 				documentFormatting = false,
 				Lua = {
+					diagnostics = { globals = { "vim" } },
 					runtime = {
 						-- Tell the language server which version of Lua you're using
 						-- (most likely LuaJIT in the case of Neovim)
@@ -18,10 +19,11 @@ lspconfig.lua_ls.setup({
 					},
 					-- Make the server aware of Neovim runtime files
 					workspace = {
-						checkThirdParty = false,
+						checkThirdParty = true,
 						library = {
 							vim.env.VIMRUNTIME,
-							-- "${3rd}/luv/library"
+							"~/.local/share/nvim/lazy",
+							-- "${3rd}/luv/library",
 							-- "${3rd}/busted/library",
 						},
 						-- or pull in all of 'runtimepath'. NOTE: this is a lot slower
@@ -63,6 +65,34 @@ lspconfig.gopls.setup({
 -- 		},
 -- 	},
 -- })
+
+lspconfig.html.setup({
+    capabilities = capabilities,
+    filetypes = { "html", "templ" },
+})
+
+lspconfig.htmx.setup({
+    capabilities = capabilities,
+    filetypes = { "html", "templ" },
+})
+
+lspconfig.tailwindcss.setup({
+    capabilities = capabilities,
+    filetypes = { "templ", "astro", "javascript", "typescript", "react" },
+    init_options = { userLanguages = { templ = "html" } },
+})
+
+lspconfig.templ.setup({
+	capabilities = capabilities,
+	flags = {
+		debounce_test_changes = 150,
+	},
+})
+
+lspconfig.bashls.setup({
+  capabilities = capabilities,
+  filetypes = { "sh" }
+})
 
 local luasnip = require("luasnip")
 
