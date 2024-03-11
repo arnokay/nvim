@@ -16,8 +16,8 @@ vim.o.wildmenu = true
 vim.o.wildmode = "list:longest"
 
 -- disable netrw for nvim-tree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 
 vim.o.swapfile = false
 vim.o.backup = false
