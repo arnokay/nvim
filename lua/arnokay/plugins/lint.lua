@@ -13,13 +13,28 @@ return {
 			lua = { "luacheck" },
 		}
 
-		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+		local function has_eslint_config()
+			local files = {
+				"eslint.config.js",
+        "eslint.config.mjs"
+			}
+			for _, file in ipairs(files) do
+				if vim.fn.filereadable(vim.fn.getcwd() .. "/" .. file) == 1 then
+					return true
+				end
+			end
+			return false
+		end
 
-		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave", "TextChanged" }, {
-			group = lint_augroup,
-			callback = function()
-				lint.try_lint()
-			end,
-		})
+		if has_eslint_config() then
+			local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+
+			vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave", "TextChanged" }, {
+				group = lint_augroup,
+				callback = function()
+					lint.try_lint()
+				end,
+			})
+		end
 	end,
 }

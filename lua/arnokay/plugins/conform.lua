@@ -7,12 +7,29 @@ return {
 		conform.setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
-				go = { "gofumpt", "goimports", "goimports-reviser" },
-				javascript = { "eslint_d", "prettier" },
-				typescript = { "eslint_d", "prettier" },
+				go = { "gofumpt", "goimports-reviser" },
+				javascript = { "eslint_d" },
+				typescript = { "eslint_d" },
 			},
-			-- disable format_on_save
-			--
+			formatters = {
+				eslint_d = {
+					condition = function()
+						local function has_eslint_config()
+							local files = {
+								"eslint.config.js",
+								"eslint.config.mjs",
+							}
+							for _, file in ipairs(files) do
+								if vim.fn.filereadable(vim.fn.getcwd() .. "/" .. file) == 1 then
+									return true
+								end
+							end
+							return false
+						end
+						return has_eslint_config()
+					end,
+				},
+			},
 			-- format_on_save = {
 			-- 	lsp_fallback = true,
 			-- 	async = false,
