@@ -3,6 +3,9 @@ vim.wo.relativenumber = true
 
 vim.o.clipboard = "unnamedplus"
 
+-- enable per project config
+vim.o.exrc = true
+
 vim.o.breakindent = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
