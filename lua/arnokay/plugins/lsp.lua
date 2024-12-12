@@ -40,13 +40,26 @@ return {
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"gopls",
-				"tsserver",
+				"ts_ls",
 				"lua_ls",
+				"eslint@4.8.0",
 			},
 			handlers = {
 				function(server_name)
 					require("lspconfig")[server_name].setup({
 						capabilities = capabilities,
+					})
+				end,
+				["ts_ls"] = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.ts_ls.setup({
+						capabilities = capabilities,
+						settings = {
+							implicitProjectConfiguration = {
+								checkJs = true,
+								allowJs = true,
+							},
+						},
 					})
 				end,
 				["gopls"] = function()
