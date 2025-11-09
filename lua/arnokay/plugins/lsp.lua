@@ -21,6 +21,10 @@ return {
 	config = function()
 		local cmp = require("cmp")
 		cmp.setup({
+			preselect = cmp.PreselectMode.Item,
+			completion = {
+				completeopt = "menu,menuone,noinsert",
+			},
 			window = {
 				completion = cmp.config.window.bordered(),
 				documentation = cmp.config.window.bordered(),
@@ -35,19 +39,30 @@ return {
 			vim.lsp.protocol.make_client_capabilities(),
 			cmp_lsp.default_capabilities()
 		)
+		capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
 
 		require("mason").setup({})
 		require("mason-lspconfig").setup({
+			automatic_installation = true,
 			ensure_installed = {
 				"gopls",
 				"ts_ls",
 				"lua_ls",
-				"eslint@4.8.0",
+				"eslint",
 			},
 			handlers = {
 				function(server_name)
 					require("lspconfig")[server_name].setup({
 						capabilities = capabilities,
+					})
+				end,
+				["terraformls"] = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.terraformls.setup({
+						capabilities = capabilities,
+						cmd = { "terraform-ls", "serve" },
+						filetypes = { "hcl", "terraform" },
+						root_dir = require("lspconfig.util").root_pattern(".git", "atlas.hcl"),
 					})
 				end,
 				["ts_ls"] = function()
